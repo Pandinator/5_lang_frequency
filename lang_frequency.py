@@ -1,4 +1,4 @@
-path = input() #User inputs a path to a file
+path = input("Enter the path to the file: ") #User inputs a path to a file
 
 word_list = open(path, "r").read().split() #Open the file
 
@@ -6,6 +6,7 @@ lst_sorted=sorted([ss for ss in set(word_list) if len(ss)>0],   #The term in squ
                    key=word_list.count,   						#in the list, which are not empty
                    reverse=True)
 j = 1
+print("10 most frequent words in the text: ")
 for word in lst_sorted: #print top-10 words
 	if j > 10:
 		break
