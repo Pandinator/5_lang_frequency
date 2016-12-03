@@ -1,7 +1,7 @@
 def load_data(filepath):
     list_of_words = open(filepath, "r", encoding="utf-8").read().lower().split()
     return list_of_words
-    #У меня не получилось вернуть список при использовании with open
+    list_of_words.close()
 
 
 def get_most_frequent_words(text):
