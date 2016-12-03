@@ -10,7 +10,6 @@ def load_data(filepath):
 
 def format_data(data_to_format):
     reworked_list_of_words = []
-    string = ""
     for word in data_to_format:  # remove any non-dig-alpha char
         word = re.sub(r'[\W$]', '', word)
         reworked_list_of_words.append(word)
