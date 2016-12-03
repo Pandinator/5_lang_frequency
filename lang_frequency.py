@@ -26,6 +26,7 @@ def get_most_frequent_words(text):
 
 def print_only_10_common_words(list_to_get_words_from):
     counter = 10
+    print("Top-10 common words: \n"
     for word_print in list_to_get_words_from:
         if counter == 1:
             print(word_print)
