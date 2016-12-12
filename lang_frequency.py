@@ -1,11 +1,10 @@
 import re
+import collections
 
 
 def load_data(filepath):
-    list_of_words = open(filepath, "r",
-                         encoding="utf-8").read().lower().split()
-    return list_of_words
-    list_of_words.close()
+    with open(filepath, "r", encoding="utf-8") as words:
+        return words.read().lower().split()
 
 
 def format_data(data_to_format):
@@ -13,26 +12,18 @@ def format_data(data_to_format):
     for word in data_to_format:  # remove any non-dig-alpha char
         word = re.sub(r'[\W$]', '', word)
         reworked_list_of_words.append(word)
-    return(reworked_list_of_words)
+    return reworked_list_of_words
 
 
 def get_most_frequent_words(text):
-    list_sorted = sorted([add for add in set(text) if len(add) > 0],
-                         key=text.count, reverse=True)
-# "add" is a variable to add words in set if these are not empty
+    list_sorted = collections.Counter(text)
     return list_sorted
 
 
-def print_only_10_common_words(list_to_get_words_from):
-    counter = 10
-    print("Top-10 common words: \n")
-    for word_print in list_to_get_words_from:
-        if counter == 1:
-            print(word_print)
-            break
-        else:
-            counter -= 1
-            print(word_print, end=", ")
+def print_only_10_common_words(list_to_get_words):
+    print("Top-10 common words: ")
+    for word_print, counter_of_printing in list_to_get_words.most_common(10):
+        print('%s: %d' % (word_print, counter_of_printing), end="; ")
 
 if __name__ == '__main__':
     users_filepath = input("Enter the path to the file: \n")
