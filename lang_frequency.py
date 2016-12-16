@@ -5,7 +5,7 @@ import collections
 def load_and_format_data(filepath):
     with open(filepath, "r", encoding="utf-8") as words:
         data = words.read()
-        data = re.sub(r'[\W]', ' ', data).split(r' ', data)
+        data = re.sub(r'[\W]', ' ', data)
         data = re.split(r' ', data)
         return data
 
