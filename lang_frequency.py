@@ -4,10 +4,10 @@ import collections
 
 def load_and_format_data(filepath):
     with open(filepath, "r", encoding="utf-8") as words:
-        data = words.read()
-        data = re.sub(r'[\W]', ' ', data)
-        data = re.split(r' ', data)
-        return data
+        formatted_words = words.read()
+        formatted_words = re.sub(r'[\W]', ' ', formatted_words)
+        formatted_words = re.split(r' ', formatted_words)
+        return formatted_words
 
 
 def get_most_frequent_words(text):
