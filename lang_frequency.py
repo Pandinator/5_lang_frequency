@@ -4,10 +4,10 @@ import collections
 
 def load_and_format_data(filepath):
     with open(filepath, "r", encoding="utf-8") as words:
-        formatted_words = words.read()
-        formatted_words = re.sub(r'[\W]', ' ', formatted_words)
-        formatted_words = re.split(r' ', formatted_words)
-        return formatted_words
+        data = words.read().lower()
+        data = re.sub(r'[\W]', ' ', data)
+        data = re.split(r' ', data)
+        return data
 
 
 def get_most_frequent_words(text):
@@ -16,13 +16,14 @@ def get_most_frequent_words(text):
 
 
 def print_most_common_words(get_words, words_amount):
-    print("Top-10 common words: \n")
+    print("Top-{} common words: ".format(words_amount))
     for word_print, counter_of_printing in get_words.most_common(words_amount):
         print('%s: %d' % (word_print, counter_of_printing), end="; ")
 
 
 if __name__ == '__main__':
     users_filepath = input("Enter the path to the file: \n")
+    words_amount = int(input("Enter the amount of words: \n"))
     words_list = load_and_format_data(users_filepath)
     words_list = get_most_frequent_words(words_list)
-    print_most_common_words(words_list, 10)
+    print_most_common_words(words_list, words_amount)
