@@ -6,11 +6,10 @@ def load_and_format_data(filepath):
     with open(filepath, "r", encoding="utf-8") as words:
         words_list = words.read().lower()
         words_list = re.sub(r'[\W]', ' ', words_list)
-        words_list = re.split(r' ', words_list)
-        return words_list
+        return re.split(r' ', words_list)
 
 
-def get_most_frequent_words(text):
+def most_common_words(text):
     counted_words_in_dict = collections.Counter(text)
     return counted_words_in_dict
 
@@ -25,5 +24,5 @@ if __name__ == '__main__':
     users_filepath = input("Enter the path to the file: \n")
     words_amount = 10
     words_list = load_and_format_data(users_filepath)
-    words_list = get_most_frequent_words(words_list)
+    words_list = most_common_words(words_list)
     print_most_common_words(words_list, words_amount)
